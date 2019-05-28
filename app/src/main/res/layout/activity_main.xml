@@ -7,29 +7,31 @@
     android:layout_height="match_parent">
 
     <!-- Appbar -->
+
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBarLayout"
+        android:id="@+id/myAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme">
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
-        <!-- Toolbar -->
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
-            app:titleTextColor="#f1f1f1"
-            android:paddingRight="20dp"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary" />
-
+            android:background="?attr/colorPrimary"
+            app:contentInsetStart="0dp"
+            app:popupTheme="@style/AppTheme.PopupOverlay"/>
     </android.support.design.widget.AppBarLayout>
 
     <!-- Fragments Container -->
 
     <include
         layout="@layout/content_main"
-        android:layout_width="0dp"
-        android:layout_height="0dp"/>
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <!-- Bottom Navigation View -->
 
@@ -37,8 +39,7 @@
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
-       android:layout_marginBottom="0dp"
+        android:background="@null"
         android:layout_gravity="bottom"
         app:menu="@menu/navigation" />
 
