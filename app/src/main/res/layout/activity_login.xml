@@ -62,7 +62,6 @@
                     android:layout_marginRight="35dp"
                     android:layout_alignParentRight="true"
                     android:layout_width="35dp"
-                    app:srcCompat="View"
                     android:padding="7dp"
                     android:layout_height="35dp" />
             </RelativeLayout>
