@@ -28,7 +28,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="default_command" />
+                            <entry key="outputName" value="default_item" />
                             <entry key="sourceFile" value="$USER_HOME$" />
                           </map>
                         </option>

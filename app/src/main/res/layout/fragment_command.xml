@@ -4,9 +4,10 @@
     android:background="#f1f1f1"
     android:layout_height="match_parent">
         <zuoix.com.zoomed.AutoFitGridRecyclerView
+            android:padding="10dp"
             android:layout_width="match_parent"
             android:id="@+id/command_list"
-            android:columnWidth="130dp"
+            android:columnWidth="150dp"
             android:layout_height="match_parent"/>
 
 </RelativeLayout>

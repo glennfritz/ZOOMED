@@ -18,6 +18,11 @@ android {
         }
     }
 }
+android {
+    defaultConfig {
+        vectorDrawables.useSupportLibrary = true
+    }
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

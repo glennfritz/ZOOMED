@@ -3,11 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:background="@drawable/transparent"
     android:layout_centerInParent="true"
+    android:padding="5dp"
     android:layout_height="wrap_content">
     <TextView
         android:layout_width="match_parent"
         android:id="@+id/title"
-        android:text="Title"
         android:padding="5dp"
         android:lines="2"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
@@ -18,11 +18,10 @@
         android:layout_below="@+id/image"
         android:layout_height="wrap_content"/>
     <ImageView
-        android:layout_width="40dp"
+        android:layout_width="25dp"
         android:id="@+id/image"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/default_command"
-        android:layout_height="40dp" />
+        android:layout_height="25dp" />
 
 
 </RelativeLayout>
