@@ -2,7 +2,9 @@
 <RelativeLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activities.LoginActivity">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -10,7 +12,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/title"
-            style="@style/Titletext"
             android:text="Company Name"/>
         <Button
             android:id="@+id/cancel"
@@ -29,7 +30,7 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:hint="username"
-                style="@style/EditTextStyle"
+
                 android:layout_height="wrap_content">
 
                 <android.support.design.widget.TextInputEditText

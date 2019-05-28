@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activities.SignupActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,7 +20,6 @@
             android:id="@+id/cancel"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:background="@drawable/cancel"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
@@ -126,8 +127,7 @@
             android:layout_below="@+id/form"
             android:layout_centerHorizontal="true"
             android:background="@null"
-            android:text="@string/login"
-            style="@style/link_button" />
+            android:text="@string/login" />
 
     </RelativeLayout>
 
