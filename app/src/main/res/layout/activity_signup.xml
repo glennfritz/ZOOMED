@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Titletext"
+            android:text="@string/signup_to_ngella" />
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/cancel"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center" />
+        <TextView
+            android:layout_below="@+id/title"
+            android:id="@+id/signuptext"
+            android:gravity="center"
+            android:textColor="#ff0000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/signuptext"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/first_name">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/firstname"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/last_name">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/lastname"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/email"
+                    android:textSize="13sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:hint="password"
+                    style="@style/EditTextStyle"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/password"
+                        android:textSize="13sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:inputType="textPassword" />
+                </android.support.design.widget.TextInputLayout>
+                <ImageView
+                    android:id="@+id/visible"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="35dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="35dp"
+                    android:padding="7dp"
+                    android:layout_height="35dp" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/signup"
+                style="@style/small_border_button"
+                android:text="@string/create_account"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@string/already_have_an_account"
+                android:textColor="#444" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@+id/form"
+            android:layout_centerHorizontal="true"
+            android:background="@null"
+            android:text="@string/login"
+            style="@style/link_button" />
+
+    </RelativeLayout>
+
+
+</ScrollView>

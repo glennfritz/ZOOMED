@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/title"
+            style="@style/Titletext"
+            android:text="Company Name"/>
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            />
+        <LinearLayout
+            android:layout_below="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:hint="username"
+                style="@style/EditTextStyle"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/username"
+                    android:textSize="13sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:hint="password"
+                    style="@style/EditTextStyle"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/password"
+                        android:textSize="13sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:inputType="textPassword" />
+                </android.support.design.widget.TextInputLayout>
+                <ImageView
+                    android:id="@+id/visible"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="35dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="35dp"
+                    app:srcCompat="View"
+                    android:padding="7dp"
+                    android:layout_height="35dp" />
+            </RelativeLayout>
+
+
+            <Button
+                android:id="@+id/login"
+                style="@style/small_border_button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Login" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
