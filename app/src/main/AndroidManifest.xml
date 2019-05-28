@@ -6,6 +6,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:name=".BaseApplication"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -16,11 +17,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.SignupActivity" />
-        <activity android:name=".activities.ResetPassword" />
+        <activity android:name=".activities.LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.SignupActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.ResetPassword"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/title_activity_main"></activity>
     </application>
 
