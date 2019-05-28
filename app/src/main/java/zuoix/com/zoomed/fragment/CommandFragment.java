@@ -43,6 +43,7 @@ public class CommandFragment extends Fragment {
         commandView = view.findViewById(R.id.command_list);
         adapter = new CommandAdapter(getContext());
         commandView.setAdapter(adapter);
+        System.out.println("am here");
         adapter.notifyDataSetChanged();
 
     }

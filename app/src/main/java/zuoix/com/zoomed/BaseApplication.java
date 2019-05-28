@@ -38,6 +38,14 @@ public class BaseApplication extends Application {
         secondGenerationCommand = new ArrayList<>();
         thirdGenerationCommand = new ArrayList<>();
 
+        firstGenerationCommand.add(new CommandModel("Hello ","Command hello",getResources().getDrawable(R.drawable.default_command)));
+        firstGenerationCommand.add(new CommandModel("Hello1 ","Command hello",getResources().getDrawable(R.drawable.default_command)));
+        firstGenerationCommand.add(new CommandModel("Hello2 ","Command hello",getResources().getDrawable(R.drawable.default_command)));
+        firstGenerationCommand.add(new CommandModel("Hello3 ","Command hello",getResources().getDrawable(R.drawable.default_command)));
+        firstGenerationCommand.add(new CommandModel("Hello4 ","Command hello",getResources().getDrawable(R.drawable.default_command)));
+        firstGenerationCommand.add(new CommandModel("Hello5 ","Command hello",getResources().getDrawable(R.drawable.default_command)));
+        firstGenerationCommand.add(new CommandModel("Hello6 ","Command hello",getResources().getDrawable(R.drawable.default_command)));
+        firstGenerationCommand.add(new CommandModel("Hello7 ","Command hello",getResources().getDrawable(R.drawable.default_command)));
 
         firstGenerationCommand.add(new CommandModel("Hello ","Command hello",getResources().getDrawable(R.drawable.default_command)));
         firstGenerationCommand.add(new CommandModel("Hello1 ","Command hello",getResources().getDrawable(R.drawable.default_command)));
