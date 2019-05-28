@@ -38,6 +38,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:attr/windowBackground"
+       android:layout_marginBottom="0dp"
+        android:layout_gravity="bottom"
         app:menu="@menu/navigation" />
 
 </android.support.design.widget.CoordinatorLayout>

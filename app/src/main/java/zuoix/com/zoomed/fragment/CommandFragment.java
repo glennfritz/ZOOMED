@@ -41,8 +41,7 @@ public class CommandFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         commandView = view.findViewById(R.id.command_list);
-        adapter = new CommandAdapter(BaseApplication.getInstance()
-                .getCommandList(new SharedPref(getContext()).getGeneration()),getContext());
+        adapter = new CommandAdapter(getContext());
         commandView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
