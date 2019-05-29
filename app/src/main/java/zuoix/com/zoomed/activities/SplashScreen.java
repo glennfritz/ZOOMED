@@ -42,7 +42,7 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        
+
         //Check for app permissions
         //In case one or more permissions are not granted
         //ActivityCompat.requestPermissions() will request permissions
@@ -132,7 +132,7 @@ public class SplashScreen extends AppCompatActivity {
         if (requestCode == PERMISSION_REQUEST_CODE) {
             HashMap<String, Integer> permissionResults = new HashMap<>();
             int deniedCount = 0;
-            
+
             //Gather permission grant result
             for(int i=0; i<grantResults.length; i++) {
                 //Add only permissions which are denied
@@ -141,7 +141,7 @@ public class SplashScreen extends AppCompatActivity {
                     deniedCount++;
                 }
             }
-            
+
             //check if all permissions are granted
             if (deniedCount != 0) {
                 for (Map.Entry<String, Integer> entry : permissionResults.entrySet()) {

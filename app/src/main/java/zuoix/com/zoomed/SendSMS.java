@@ -44,37 +44,29 @@ public class SendSMS {
         String DELIVERED = "SMS_DELIVERED";
         context.registerReceiver (messageSent,new IntentFilter (SENT));
         context.registerReceiver (messagedelivered,new IntentFilter (DELIVERED));
-
         Intent send = new Intent (SENT);
         send.putExtra ("command",command);
         PendingIntent sentPI = PendingIntent.getBroadcast (context , 0 ,send , 0);
-
         Intent deliver = new Intent (DELIVERED);
         deliver.putExtra ("command",command);
         PendingIntent deliveredPI = PendingIntent.getBroadcast (context , 0 , deliver , 0);
-
         try{
             Method method = Class.forName("android.os.ServiceManager").getDeclaredMethod("getService", String.class);
             method.setAccessible(true);
             Object param = method.invoke(null, "isms");
-
             for(int i = 0; i <param.getClass().getMethods().length;i++ ){
                 System.out.println("       ///////////////////     "+param.getClass().getMethods()[i].getName()+"\n");
             }
-
             System.out.println("        /////// "+siName);
             if(param == null){
                 System.out.println("        /////// null param");
             }
-
             method = Class.forName("com.android.internal.telephony.ISms$Stub").getDeclaredMethod("asInterface", IBinder.class);
             method.setAccessible(true);
             Object stubObj = method.invoke(null, param);
-
             for(int i = 0; i <stubObj.getClass().getMethods().length;i++ ){
                 System.out.println("       /////     "+stubObj.getClass().getMethods()[i].getName()+"\n");
             }
-
             if (Build.VERSION.SDK_INT < 18) {
                 method = stubObj.getClass().getMethod("sendTextWithExtraParamsForSubscriber", String.class, String.class, String.class, PendingIntent.class, PendingIntent.class);
                 method.invoke(stubObj, DestNu, null, message, sentPI, deliveredPI);
@@ -82,7 +74,6 @@ public class SendSMS {
                 method = stubObj.getClass().getMethod("sendTextWithExtraParamsForSubscriber", String.class, String.class, String.class, String.class, PendingIntent.class, PendingIntent.class);
                 method.invoke(stubObj, context, DestNu, null, message, sentPI, deliveredPI);
             }
-
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (NoSuchMethodException e) {
@@ -119,7 +110,6 @@ public class SendSMS {
         /*Intent send = new Intent (SENT);
         send.putExtra("command",id);
         PendingIntent sentPI = PendingIntent.getBroadcast (context , 0 ,send , 0);
-
         Intent deliver = new Intent (DELIVERED);
         deliver.putExtra ("id",id);
         PendingIntent deliveredPI = PendingIntent.getBroadcast (context , 0 , deliver , 0);
@@ -138,7 +128,6 @@ public class SendSMS {
                     msgSent ( mid,"2");
                     break;
             }
-
         }
     };*/
 
@@ -196,5 +185,3 @@ public class SendSMS {
 
 
 }
-
-

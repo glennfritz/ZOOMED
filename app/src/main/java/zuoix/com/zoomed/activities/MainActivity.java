@@ -9,6 +9,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
+
+
+import zuoix.com.zoomed.GPSTracker;
 import zuoix.com.zoomed.R;
 import zuoix.com.zoomed.fragment.AccountFragment;
 import zuoix.com.zoomed.fragment.CommandFragment;
@@ -26,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     final FragmentManager fm = getSupportFragmentManager();
     Fragment active = command;
     Context context;
+    SharedPref sp;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -58,13 +62,32 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        sp = new SharedPref(this);
         getSupportActionBar().setTitle(R.string.app_name);
-        fm.beginTransaction().add(R.id.main_container, account, "3").hide(account).commit();
-        fm.beginTransaction().add(R.id.main_container, setting, "2").hide(setting).commit();
-        fm.beginTransaction().add(R.id.main_container,command, "1").commit();
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         context = this;
+        fm.beginTransaction().add(R.id.main_container, account, "1").hide(account).commit();
+        fm.beginTransaction().add(R.id.main_container, setting, "2").hide(setting).commit();
+        fm.beginTransaction().add(R.id.main_container,command, "3").commit();
+        navigation.setSelectedItemId(R.id.command);
+
+        GPSTracker gpsTracker = new GPSTracker(this);
+
+        if (gpsTracker.getIsGPSTrackingEnabled() ) {
+            sp.setLatitude(String.valueOf(gpsTracker.getLatitude()));
+            sp.setLongitude(String.valueOf(gpsTracker.getLongitude()));
+            sp.setLongitude(String.valueOf(gpsTracker.getLongitude()));
+
+        }else {
+                // can't get location
+                // GPS or Network is not enabled
+                // Ask user to enable GPS/network in settings
+            }
+
 
 
     }
@@ -72,6 +95,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            if(active != command){
+                navigation.setSelectedItemId(R.id.command);
+            }else{
+                finish();
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -83,4 +118,6 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
     }
+
+
 }

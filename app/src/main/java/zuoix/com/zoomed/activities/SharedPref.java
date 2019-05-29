@@ -33,6 +33,7 @@ public class SharedPref {
 
     public String getDestinationNumber(){
         return sp.getString("number","653251366");
+
     }
     public void setDestinationNumber(String number){
         editor.putString("number",number);
