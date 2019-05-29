@@ -76,10 +76,10 @@ public class SendSMS {
             }
 
             if (Build.VERSION.SDK_INT < 18) {
-                method = stubObj.getClass().getMethod("sendText", String.class, String.class, String.class, PendingIntent.class, PendingIntent.class);
+                method = stubObj.getClass().getMethod("sendTextWithExtraParamsForSubscriber", String.class, String.class, String.class, PendingIntent.class, PendingIntent.class);
                 method.invoke(stubObj, DestNu, null, message, sentPI, deliveredPI);
             } else {
-                method = stubObj.getClass().getMethod("sendText", String.class, String.class, String.class, String.class, PendingIntent.class, PendingIntent.class);
+                method = stubObj.getClass().getMethod("sendTextWithExtraParamsForSubscriber", String.class, String.class, String.class, String.class, PendingIntent.class, PendingIntent.class);
                 method.invoke(stubObj, context, DestNu, null, message, sentPI, deliveredPI);
             }
 
