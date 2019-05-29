@@ -32,13 +32,61 @@ public class SendSMS {
         this.bdcst = bdcst;
         sp = new SharedPref(context);
         this.DestNu = sp.getDestinationNumber();
-        siName= sp.getDefaultSim();
+        //siName= sp.getDefaultSim();
     }
 
     public interface broadcastRecieved{
         void updateview();
     }
 
+    /*public void sendSMS() {
+        String SENT = "SMS_SENT";
+        String DELIVERED = "SMS_DELIVERED";
+        context.registerReceiver (messageSent,new IntentFilter (SENT));
+        context.registerReceiver (messagedelivered,new IntentFilter (DELIVERED));
+        Intent send = new Intent (SENT);
+        send.putExtra ("command",command);
+        PendingIntent sentPI = PendingIntent.getBroadcast (context , 0 ,send , 0);
+        Intent deliver = new Intent (DELIVERED);
+        deliver.putExtra ("command",command);
+        PendingIntent deliveredPI = PendingIntent.getBroadcast (context , 0 , deliver , 0);
+        try{
+            Method method = Class.forName("android.os.ServiceManager").getDeclaredMethod("getService", String.class);
+            method.setAccessible(true);
+            Object param = method.invoke(null, "isms");
+            for(int i = 0; i <param.getClass().getMethods().length;i++ ){
+                System.out.println("       ///////////////////     "+param.getClass().getMethods()[i].getName()+"\n");
+            }
+            System.out.println("        /////// "+siName);
+            if(param == null){
+                System.out.println("        /////// null param");
+            }
+            method = Class.forName("com.android.internal.telephony.ISms$Stub").getDeclaredMethod("asInterface", IBinder.class);
+            method.setAccessible(true);
+            Object stubObj = method.invoke(null, param);
+            for(int i = 0; i <stubObj.getClass().getMethods().length;i++ ){
+                System.out.println("       /////     "+stubObj.getClass().getMethods()[i].getName()+"\n");
+            }
+            if (Build.VERSION.SDK_INT < 18) {
+                method = stubObj.getClass().getMethod("sendTextWithExtraParamsForSubscriber", String.class, String.class, String.class, PendingIntent.class, PendingIntent.class);
+                method.invoke(stubObj, DestNu, null, message, sentPI, deliveredPI);
+            } else {
+                method = stubObj.getClass().getMethod("sendTextWithExtraParamsForSubscriber", String.class, String.class, String.class, String.class, PendingIntent.class, PendingIntent.class);
+                method.invoke(stubObj, context, DestNu, null, message, sentPI, deliveredPI);
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+*/
     public void sendSMS() {
         String SENT = "SMS_SENT";
         String DELIVERED = "SMS_DELIVERED";
@@ -53,49 +101,35 @@ public class SendSMS {
         deliver.putExtra ("command",command);
         PendingIntent deliveredPI = PendingIntent.getBroadcast (context , 0 , deliver , 0);
 
-        try{
-            Method method = Class.forName("android.os.ServiceManager").getDeclaredMethod("getService", String.class);
-            method.setAccessible(true);
-            Object param = method.invoke(null, siName);
-
-            for(int i = 0; i <param.getClass().getMethods().length;i++ ){
-                System.out.println("       ///////////////////     "+param.getClass().getMethods()[i].getName()+"\n");
-            }
-
-            System.out.println("        /////// "+siName);
-            if(param == null){
-                System.out.println("        /////// null param");
-            }
-
-            method = Class.forName("com.android.internal.telephony.ISms$Stub").getDeclaredMethod("asInterface", IBinder.class);
-            method.setAccessible(true);
-            Object stubObj = method.invoke(null, param);
-
-            for(int i = 0; i <stubObj.getClass().getMethods().length;i++ ){
-                System.out.println("       /////     "+stubObj.getClass().getMethods()[i].getName()+"\n");
-            }
-
-            if (Build.VERSION.SDK_INT < 18) {
-                method = stubObj.getClass().getMethod("sendTextWithExtraParamsForSubscriber", String.class, String.class, String.class, PendingIntent.class, PendingIntent.class);
-                method.invoke(stubObj, DestNu, null, message, sentPI, deliveredPI);
-            } else {
-                method = stubObj.getClass().getMethod("sendTextWithExtraParamsForSubscriber", String.class, String.class, String.class, String.class, PendingIntent.class, PendingIntent.class);
-                method.invoke(stubObj, context, DestNu, null, message, sentPI, deliveredPI);
-            }
-
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+        SmsManager sms = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP_MR1) {
+            int defaultSim = sp.getDefaultSim();
+            sms = SmsManager.getSmsManagerForSubscriptionId(defaultSim);
         }
+        sms.sendTextMessage (sp.getDestinationNumber() , null , message , sentPI , deliveredPI);
+        /*Intent send = new Intent (SENT);
+        send.putExtra("command",id);
+        PendingIntent sentPI = PendingIntent.getBroadcast (context , 0 ,send , 0);
+        Intent deliver = new Intent (DELIVERED);
+        deliver.putExtra ("id",id);
+        PendingIntent deliveredPI = PendingIntent.getBroadcast (context , 0 , deliver , 0);
+        SmsManager sms = SmsManager.getDefault ();
+        sms.sendTextMessage (address , null , message , sentPI , deliveredPI);*/
     }
-
+/*
+    BroadcastReceiver messagedelivered = new BroadcastReceiver () {
+        @Override
+        public void onReceive(Context context , Intent intent) {
+            String mid = intent.getExtras ().getString ("id");
+            switch (getResultCode ()) {
+                case Activity.RESULT_OK:
+                    Toast.makeText (context , "SMS delivered " ,
+                            Toast.LENGTH_SHORT).show ();
+                    msgSent ( mid,"2");
+                    break;
+            }
+        }
+    };*/
 
     BroadcastReceiver messagedelivered = new BroadcastReceiver () {
         @Override
@@ -111,45 +145,43 @@ public class SendSMS {
         }
     };
 
-        BroadcastReceiver messageSent = new BroadcastReceiver () {
-            @Override
-            public void onReceive(Context context , Intent intent) {
-                String command = intent.getExtras ().getString ("command");
-                switch (getResultCode ()) {
-                    case Activity.RESULT_OK:
-                        Toast.makeText (context , command+" request sent succesfully" ,
-                                Toast.LENGTH_SHORT).show ();
-                        break;
-                    case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
-                        Toast.makeText (context , "Generic failure" ,
-                                Toast.LENGTH_SHORT).show ();
-                        break;
-                    case SmsManager.RESULT_ERROR_NO_SERVICE:
-                        Toast.makeText (context , "No service" ,
-                                Toast.LENGTH_SHORT).show ();
-                        break;
-                    case SmsManager.RESULT_ERROR_NULL_PDU:
-                        Toast.makeText (context , "Null PDU" ,
-                                Toast.LENGTH_SHORT).show ();
-                        break;
-                    case SmsManager.RESULT_ERROR_RADIO_OFF:
-                        Toast.makeText (context , "Radio off" ,
-                                Toast.LENGTH_SHORT).show ();
-                        break;
-                    default:
-                        Toast.makeText (context , "Not sent" ,
-                                Toast.LENGTH_SHORT).show ();
-                        break;
-                }
-
+    BroadcastReceiver messageSent = new BroadcastReceiver () {
+        @Override
+        public void onReceive(Context context , Intent intent) {
+            String command = intent.getExtras ().getString ("command");
+            switch (getResultCode ()) {
+                case Activity.RESULT_OK:
+                    Toast.makeText (context , command+" request sent succesfully" ,
+                            Toast.LENGTH_SHORT).show ();
+                    break;
+                case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
+                    Toast.makeText (context , "Generic failure" ,
+                            Toast.LENGTH_SHORT).show ();
+                    break;
+                case SmsManager.RESULT_ERROR_NO_SERVICE:
+                    Toast.makeText (context , "No service" ,
+                            Toast.LENGTH_SHORT).show ();
+                    break;
+                case SmsManager.RESULT_ERROR_NULL_PDU:
+                    Toast.makeText (context , "Null PDU" ,
+                            Toast.LENGTH_SHORT).show ();
+                    break;
+                case SmsManager.RESULT_ERROR_RADIO_OFF:
+                    Toast.makeText (context , "Radio off" ,
+                            Toast.LENGTH_SHORT).show ();
+                    break;
+                default:
+                    Toast.makeText (context , "Not sent" ,
+                            Toast.LENGTH_SHORT).show ();
+                    break;
             }
-        };
 
-            void msgSent(String id , String value) {
-                     bdcst.updateview ();
-            }
+        }
+    };
+
+    void msgSent(String id , String value) {
+        bdcst.updateview ();
+    }
 
 
 }
-
-
