@@ -27,12 +27,13 @@ public class SharedPref {
         editor.commit();
     }
 
-    public String getDefaultSim(){
-        return sp.getString("sim","isms");
+    public int getDefaultSim(){
+        return sp.getInt("sim",-1);
     }
 
     public String getDestinationNumber(){
-        return sp.getString("number","672081771");
+        return sp.getString("number","653251366");
+
     }
     public void setDestinationNumber(String number){
         editor.putString("number",number);
@@ -40,7 +41,7 @@ public class SharedPref {
     }
 
     public void setDefaultSim(int id){
-        editor.putString("sim","isms"+id);
+        editor.putInt("sim", id);
         editor.commit();
     }
 
