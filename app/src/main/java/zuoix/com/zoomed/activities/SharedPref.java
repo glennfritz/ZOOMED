@@ -27,6 +27,49 @@ public class SharedPref {
         editor.commit();
     }
 
+    public int getDefaultSim(){
+        return sp.getInt("sim",-1);
+    }
+
+    public String getDestinationNumber(){
+        return sp.getString("number","653251366");
+    }
+    public void setDestinationNumber(String number){
+        editor.putString("number",number);
+        editor.commit();
+    }
+
+    public void setDefaultSim(int id){
+        editor.putInt("sim", id);
+        editor.commit();
+    }
+
+    public Double getLatitude(){
+        return Double.parseDouble(sp.getString("latitude","37.4220041"));
+    }
+
+    public Double getLongitude(){
+        return Double.parseDouble(sp.getString("longitude","-122.0862515"));
+    }
+    public void setLatitude(String latitude){
+        editor.putString("latitude",latitude);
+        editor.commit();
+    }
+
+    public void setLongitude(String longitude){
+        editor.putString("longitude",longitude);
+        editor.commit();
+    }
+
+    public void setCountry(String country){
+        editor.putString("country",country);
+        editor.commit();
+    }
+    public String getCountry(){
+        return sp.getString("country","Cameroon");
+    }
+
+
     public int getGeneration(){
         return sp.getInt("generation",1);
     }
