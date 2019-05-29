@@ -10,11 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.CameraPosition;
-import com.google.android.gms.maps.model.LatLng;
 
 import zuoix.com.zoomed.GPSTracker;
 import zuoix.com.zoomed.R;

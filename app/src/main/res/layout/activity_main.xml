@@ -42,7 +42,6 @@
         app:layout_scrollFlags="scroll|enterAlways"
         android:background="@null"
         android:layout_gravity="bottom"
-        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
         app:menu="@menu/navigation" />
 
 </android.support.design.widget.CoordinatorLayout>
