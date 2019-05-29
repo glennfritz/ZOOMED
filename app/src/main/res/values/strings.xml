@@ -9,6 +9,12 @@
     <string name="command">Command</string>
     <string name="setting">Setting</string>
 
+    <string name="start">GOT IT</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="how_to">Lorem Ipsum</string>
+    <string name="welcome_desc">This is lorem ipsum welcom description</string>
 </resources>
