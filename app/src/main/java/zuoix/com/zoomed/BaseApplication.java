@@ -2,9 +2,7 @@ package zuoix.com.zoomed;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatDelegate;
-import android.support.v7.content.res.AppCompatResources;
 
 import java.util.ArrayList;
 
