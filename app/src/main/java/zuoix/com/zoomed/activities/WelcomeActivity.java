@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
@@ -58,7 +59,6 @@ public class WelcomeActivity extends AppCompatActivity {
 
             setContentView(R.layout.activity_welcome);
 
-            prefManager.setDefaultSim(-1);
             if (prefManager.getDefaultSim() == -1) {
                 final SmsManager[] smsManager = {null};
                 List<String> simNames = new ArrayList<>();
@@ -74,6 +74,7 @@ public class WelcomeActivity extends AppCompatActivity {
                     builder.setCancelable(false);
                     builder.setTitle(R.string.select_sim)
                             .setItems(simNames.toArray(new String[simNames.size()]), new DialogInterface.OnClickListener() {
+                                @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
                                 public void onClick(DialogInterface dialog, int pos) {
                                     // The 'which' argument contains the index position
                                     // of the selected item

@@ -16,7 +16,49 @@
     <string name="select_sim">Select sim</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="how_to">Lorem Ipsum</string>
     <string name="welcome_desc">This is lorem ipsum welcom description</string>
+
+
+   <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- first generation -->
+    <string name="where_is_my_car">Where is my Car</string>
+    <string name="continious_locate">Continious locate</string>
+    <string name="cancel_continious_locate">Cancel continious locate</string>
+    <string name="speed_alerts">Speed alerts</string>
+    <string name="no_speed_alerts">No speed alerts</string>
+    <string name="ignition_alert">Ignition alert</string>
+    <string name="cancel_ignition_alert">Cancel ignition alert</string>
+    <string name="immobilize_engine">Immobilize engine</string>
+    <string name="activate_engine">Activate engine</string>
+    <string name="immobilize_engine_2">Immobilize engine 2</string>
+    <string name="activate_engine_2">Activate engine 2</string>
+    <string name="voice_surveillance">Voice surveillance</string>
+    <string name="two_way_calling">Two way calling</string>
+    <string name="sms_mode">SMS Mode</string>
+
+    <!-- second generation -->
+    <string name="ignition_alerts">Ignition alert</string>
+    <string name="cancel_sos_alert">Cancel SOS alert</string>
+    <string name="shock_alert">Shock alert</string>
+    <string name="cancel_shock_alert">Cancel shock alert</string>
+    <string name="sensors_alerts">Sensors alerts</string>
+    <string name="cancel_sensors_alerts">Cancel sensors alerts</string>
+    <string name="add_user">Add user</string>
+    <string name="remove_user">Remove user</string>
+    <string name="calling_mode">Calling Mode</string>
+   <string name="set_geo_fence">Set Geo fence</string>
+    <string name="cancel_geo_fence">Cancel Geo fence</string>
+    <string name="time_zone">Time zone</string>
+
+    <!-- third generation -->
+     <string name="gprs_interval">GPRS interval</string>
+    <string name="check_gprs_interval">Check GPRS interval</string>
+    <string name="speed_alert">Speed alert</string>
+    <string name="add_user_sos">Add user SOS</string>
+    <string name="add_user_monitoring">Add user monitoring</string>
+    <string name="no_speed_alert">No speed alert</string>
 </resources>
+

@@ -5,8 +5,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -14,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
@@ -23,6 +26,7 @@ import java.util.Map;
 
 import zuoix.com.zoomed.BaseApplication;
 import zuoix.com.zoomed.CommandModel;
+import zuoix.com.zoomed.InitCommands;
 import zuoix.com.zoomed.R;
 
 public class SplashScreen extends AppCompatActivity {
@@ -35,67 +39,39 @@ public class SplashScreen extends AppCompatActivity {
             Manifest.permission.SEND_SMS,
             Manifest.permission.READ_PHONE_STATE
     };
-
     private static final int PERMISSION_REQUEST_CODE = 1240;
+    ProgressBar pb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
         //Check for app permissions
         //In case one or more permissions are not granted
         //ActivityCompat.requestPermissions() will request permissions
         //and the control goes to onRequestPermissionResult() callback method
+        pb = findViewById(R.id.pb);
         if (checkAndRequestPermissions()) {
 
             BaseApplication.instance.onCreate();
-            BaseApplication.getInstance().firstGenerationCommand.add(new CommandModel("Hello ", "Command hello", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().firstGenerationCommand.add(new CommandModel("Hello1 ", "Command hello", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().firstGenerationCommand.add(new CommandModel("Hello2 ", "Command hello", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().firstGenerationCommand.add(new CommandModel("Hello3 ", "Command hello", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().firstGenerationCommand.add(new CommandModel("Hello4 ", "Command hello", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().firstGenerationCommand.add(new CommandModel("Hello5 ", "Command hello", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().firstGenerationCommand.add(new CommandModel("Hello6 ", "Command hello", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().firstGenerationCommand.add(new CommandModel("Hello7 ", "Command hello", getResources().getDrawable(R.drawable.default_command)));
-
-            BaseApplication.getInstance().firstGenerationCommand.add(new CommandModel("Hello ", "Command hello", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().firstGenerationCommand.add(new CommandModel("Hello1 ", "Command hello", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().firstGenerationCommand.add(new CommandModel("Hello2 ", "Command hello", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().firstGenerationCommand.add(new CommandModel("Hello3 ", "Command hello", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().firstGenerationCommand.add(new CommandModel("Hello4 ", "Command hello", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().firstGenerationCommand.add(new CommandModel("Hello5 ", "Command hello", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().firstGenerationCommand.add(new CommandModel("Hello6 ", "Command hello", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().firstGenerationCommand.add(new CommandModel("Hello7 ", "Command hello", getResources().getDrawable(R.drawable.default_command)));
-
-            //second generation
-            BaseApplication.getInstance().secondGenerationCommand.add(new CommandModel("bigginner 1", "", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().secondGenerationCommand.add(new CommandModel("bigginner 2", "", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().secondGenerationCommand.add(new CommandModel("bigginner 3", "", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().secondGenerationCommand.add(new CommandModel("bigginner 4", "", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().secondGenerationCommand.add(new CommandModel("bigginner 5", "", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().secondGenerationCommand.add(new CommandModel("bigginner 6", "", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().secondGenerationCommand.add(new CommandModel("bigginnerb7", "", getResources().getDrawable(R.drawable.default_command)));
-
-            //third generation
-            BaseApplication.getInstance().thirdGenerationCommand.add(new CommandModel("generation 1", "", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().thirdGenerationCommand.add(new CommandModel("generation 2", "", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().thirdGenerationCommand.add(new CommandModel("generation fffffffffff", "", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().thirdGenerationCommand.add(new CommandModel("generation 3", "", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().thirdGenerationCommand.add(new CommandModel("generation 4", "", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().thirdGenerationCommand.add(new CommandModel("generationv5", "", getResources().getDrawable(R.drawable.default_command)));
-            BaseApplication.getInstance().thirdGenerationCommand.add(new CommandModel("generation 6", "", getResources().getDrawable(R.drawable.default_command)));
-
-
             RelativeLayout splash_layout = findViewById(R.id.splash_layout);
             Animation animSlideUp = AnimationUtils.loadAnimation(this, R.anim.slide_up);
             splash_layout.startAnimation(animSlideUp);
+            new InitCommands(this);
 
             Thread timer = new Thread() {
+                @RequiresApi(api = Build.VERSION_CODES.N)
                 @Override
                 public void run() {
                     try {
+                        pb.setProgress(5);
+                        sleep(500);
+                        pb.setProgress(30);
+                        sleep(1500);
+                        pb.setProgress(70);
                         sleep(2500);
+                        pb.setProgress(95);
+                        sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } finally {

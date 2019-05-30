@@ -81,6 +81,11 @@ public class SharedPref {
         editor.commit();
     }
 
+    public boolean istrue(){
+        return true;
+    }
+
+
     public boolean isFirstTimeLaunch() {
         return sp.getBoolean(IS_FIRST_TIME_LAUNCH, true);
     }
