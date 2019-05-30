@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     Context context;
     SharedPref sp;
 
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -118,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
     }
+
 
 
 }
