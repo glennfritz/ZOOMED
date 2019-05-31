@@ -1,4 +1,4 @@
-package zuoix.com.zoomed;
+package zuoix.com.zoomed.models;
 
 import android.graphics.drawable.Drawable;
 

@@ -60,5 +60,6 @@
     <string name="add_user_sos">Add user SOS</string>
     <string name="add_user_monitoring">Add user monitoring</string>
     <string name="no_speed_alert">No speed alert</string>
+    <string name="switch_view">Switch View</string>
 </resources>
 

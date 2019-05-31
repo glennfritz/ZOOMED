@@ -1,16 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@null"
-    android:layout_height="match_parent"
-    tools:context=".fragment.SettingFragment">
+    android:orientation="vertical"
+    android:weightSum="8"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:gravity="center_vertical"
+    android:layout_height="match_parent">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <Button
         android:layout_width="match_parent"
-        android:background="@null"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:text="Add administrator"
+        android:textColor="#fff"
+        android:textSize="24sp"
+        android:background="#15A3F7"
+        android:id="@+id/add_administrator"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textColor="#fff"
+        android:textSize="24sp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:background="#15A3F7"
+        android:text="Remove administrator"
+        android:id="@+id/remove_administrator"/>
 
-</FrameLayout>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textColor="#fff"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:autofillHints="Set language"
+        android:background="#15A3F7"
+        android:id="@+id/set_language"/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textColor="#fff"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:autofillHints="Set time zone"
+        android:background="#15A3F7"
+        android:id="@+id/set_timeZone"/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textColor="#fff"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:autofillHints="Set generation"
+        android:background="#15A3F7"
+        android:id="@+id/set_generation"/>
+
+</LinearLayout>

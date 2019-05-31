@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatDelegate;
 
 import java.util.ArrayList;
 
+import zuoix.com.zoomed.models.CommandModel;
+
 
 public class BaseApplication extends Application {
     public static ArrayList<CommandModel> firstGenerationCommand;

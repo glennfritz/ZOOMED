@@ -25,7 +25,6 @@ import java.util.List;
 import java.util.Map;
 
 import zuoix.com.zoomed.BaseApplication;
-import zuoix.com.zoomed.CommandModel;
 import zuoix.com.zoomed.InitCommands;
 import zuoix.com.zoomed.R;
 

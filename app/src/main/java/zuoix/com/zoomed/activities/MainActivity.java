@@ -1,15 +1,34 @@
 package zuoix.com.zoomed.activities;
 
+import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.location.Location;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.SmsMessage;
 import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.mapswithme.maps.api.MWMPoint;
+import com.mapswithme.maps.api.MWMResponse;
+import com.mapswithme.maps.api.MapsWithMeApi;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import zuoix.com.zoomed.GPSTracker;
 import zuoix.com.zoomed.R;
@@ -17,7 +36,8 @@ import zuoix.com.zoomed.fragment.AccountFragment;
 import zuoix.com.zoomed.fragment.CommandFragment;
 import zuoix.com.zoomed.fragment.SettingFragment;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity  {
 
     final Fragment account = new AccountFragment();
     final Fragment setting = new SettingFragment();
@@ -30,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     Fragment active = command;
     Context context;
     SharedPref sp;
+
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -78,17 +99,20 @@ public class MainActivity extends AppCompatActivity {
 
         GPSTracker gpsTracker = new GPSTracker(this);
 
-        if (gpsTracker.getIsGPSTrackingEnabled() ) {
-            sp.setLatitude(String.valueOf(gpsTracker.getLatitude()));
-            sp.setLongitude(String.valueOf(gpsTracker.getLongitude()));
-            sp.setLongitude(String.valueOf(gpsTracker.getLongitude()));
+        if (gpsTracker.getLocation() != null) {
+            Location location = gpsTracker.getLocation();
+            sp.setLatitude(String.valueOf(location.getLatitude()));
+            sp.setLongitude(String.valueOf(location.getLongitude()));
 
         }else {
                 // can't get location
                 // GPS or Network is not enabled
                 // Ask user to enable GPS/network in settings
             }
-
+        // Handle intent you specified with PandingIntent
+        // Now it has additional information (MWMPoint).
+        //handleIntent(getIntent());
+       // showSomethingOnTheMap();
 
 
     }
@@ -119,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
     }
-
 
 
 }
