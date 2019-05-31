@@ -99,8 +99,7 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //passing user data to account fragment
-        
-        Log.d("Userdata", String.valueOf(user));
+       // Log.d("Userdata", String.valueOf(user));
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         sp = new SharedPref(this);

@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     TextInputEditText mEtPassword;
     TextInputLayout usernameLayout;
     TextInputLayout passwordLayout;
-
+    SharedPref sp = null;
     List<User> userList = new ArrayList<>();
 
     @Override
@@ -48,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        sp = new SharedPref(this);
         //Setup Demo users
         mEtUserName = findViewById(R.id.username);
         mEtPassword = findViewById(R.id.password);
@@ -66,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
     private void setUserInfoInSharedPrefs(User user){
         // try to extract relevant data from response and save in shared preferences
         MainActivity.setUserData(user);
+        sp.setUserInformation(user);
         // login the user after successful authentication
         startActivity(new Intent(LoginActivity.this, MainActivity.class));
         finish();
