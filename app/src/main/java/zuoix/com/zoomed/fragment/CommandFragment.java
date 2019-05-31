@@ -24,6 +24,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.osmdroid.api.IMapController;
@@ -95,9 +97,7 @@ public class CommandFragment extends Fragment implements OnMapReadyCallback {
         sp = new SharedPref(getContext());
         adapter.notifyDataSetChanged();
         SupportMapFragment mapFragment = SupportMapFragment.newInstance();
-        if(!OFF_LINE_MODE_TRUE){
-            mapFragment.getMapAsync(this);
-        }
+        mapFragment.getMapAsync(this);
         getChildFragmentManager().beginTransaction().replace(R.id.map_online, mapFragment).commit();
         getContext().registerReceiver(responseRecieved,new IntentFilter("SMS_RECEIVED"));
 
@@ -108,10 +108,10 @@ public class CommandFragment extends Fragment implements OnMapReadyCallback {
         onlineMap = view.findViewById(R.id.fragment_holder);
 
         String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath();
-        String pathDir = baseDir + "/Android/data/zouix.com.zoomed/";
+        String pathDir = baseDir + "/storage/sdcard0/Android/data/zouix.com.zoomed/tiles/";
 
         Configuration.getInstance().setOsmdroidBasePath(new File(pathDir));
-        Configuration.getInstance().setOsmdroidTileCache(pathDir, "tiles"));
+        //Configuration.getInstance().setOsmdroidTileCache(pathDir, "tiles"));
         System.out.println("      tile  /////   "+pathDir);
 
         offlineMap.setTileSource(new XYTileSource("Came", 0, 18, 256, ".png", new String[] { new File(Environment.getExternalStorageDirectory(), "tiles").getPath()}));
@@ -120,9 +120,9 @@ public class CommandFragment extends Fragment implements OnMapReadyCallback {
         }else{
             System.out.println(" ////////////////////           Tile dont exist");
         }
-        offlineMap.setUseDataConnection(true); //optional, but a good way to prevent loading from the network and test your zip loading.
-        IMapController mapController = offlineMap.getController();
-        mapController.setZoom(5);
+        Configuration.getInstance().setOsmdroidBasePath(new File(pathDir));
+        File tileCache = new File(Configuration.getInstance().getOsmdroidBasePath().getAbsolutePath(), "tile");
+        Configuration.getInstance().setOsmdroidTileCache(tileCache);
         setDefaultViewPoint(sp.getLatitude(),sp.getLongitude());
 
    }
@@ -183,7 +183,8 @@ public class CommandFragment extends Fragment implements OnMapReadyCallback {
                         String n = currentMessage.getDisplayOriginatingAddress();
                         String m = currentMessage.getDisplayMessageBody();
                         if(checkString(m,n).equals("success")){
-                            showLocations();
+                            JSONArray jsonObject = new JSONArray(m);
+                           showLocations(jsonObject);
                         }
 
 
@@ -206,10 +207,18 @@ public class CommandFragment extends Fragment implements OnMapReadyCallback {
     }
 
 
-    void showLocations(){
+    void showLocations( JSONArray array){
         //your items
         ArrayList<OverlayItem> items = new ArrayList<OverlayItem>();
-        items.add(new OverlayItem("Car", "Description", new GeoPoint(0.0d,0.0d))); // Lat/Lon decimal degrees
+        for(int i =0; i<array.length(); i++){
+            try {
+                JSONObject object = array.getJSONObject(i);
+                items.add(new OverlayItem("Car", "Description", new GeoPoint(Double.parseDouble(object.getString("lat")) ,Double.parseDouble(object.getString("long"))))); // Lat/Lon decimal degrees
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
 
 //the overlay
         ItemizedOverlayWithFocus<OverlayItem> mOverlay = new ItemizedOverlayWithFocus<OverlayItem>(items,
