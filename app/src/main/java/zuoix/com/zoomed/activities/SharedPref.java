@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import zuoix.com.zoomed.models.Car;
+import zuoix.com.zoomed.models.User;
 
 public class SharedPref {
     Context context;
@@ -107,7 +108,7 @@ public class SharedPref {
         return sp.getBoolean(IS_FIRST_TIME_LAUNCH, true);
     }
 
-    public void setUserInformation(JSONObject response) throws JSONException {
+    public void setUserInformation(User user){
         String firstName;
         String lastName;
         String email;
@@ -115,20 +116,20 @@ public class SharedPref {
         String destPhoneNumb;
 
         // get the user's first name and set in shared prefs: optional
-        firstName = response.optString(FIRST_NAME);
+        firstName = user.getFirstname();
         editor.putString(FIRST_NAME, firstName);
         // get the user's last name and set in shared prefs: optional
-        lastName = response.optString(LAST_NAME);
+        lastName = user.getLastname();
         editor.putString(LAST_NAME, lastName);
         // get the user's phone number and set in shared prefs: mandatory so the use of getString instead of optString
-        destPhoneNumb = response.getString(PHONE_NUMBER);
+        destPhoneNumb = user.getPhone_number();
         editor.putString(PHONE_NUMBER, destPhoneNumb);
         // get the email and set in shared prefs
-        email = response.optString(EMAIL);
+        email = user.getEmail();
         editor.putString(EMAIL, email);
         // get the cars json array convert to string and set in shared pref: again it is mandatory hence the use of get.. inst or opt..
-        JSONArray cars = response.getJSONArray(CARS);
-        editor.putString(CARS, cars.toString());
+        //JSONArray cars = response.getJSONArray(CARS);
+        //editor.putString(CARS, cars.toString());
 
     }
 

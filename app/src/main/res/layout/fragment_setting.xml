@@ -42,7 +42,7 @@
         android:autofillHints="Set language"
         android:background="#15A3F7"
         android:id="@+id/set_language"/>
-    <Spinner
+    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -51,7 +51,7 @@
         android:layout_marginTop="5dp"
         android:autofillHints="Set time zone"
         android:background="#15A3F7"
-        android:id="@+id/set_timeZone"/>
+        android:id="@+id/set_timezone"/>
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="0dp"
