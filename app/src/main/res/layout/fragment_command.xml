@@ -48,8 +48,21 @@
         </LinearLayout>-->
 
 
+
+
+    <org.osmdroid.views.MapView
+        android:id="@+id/map_offline"
+        android:layout_width="match_parent"
+        android:visibility="visible"
+        android:layout_height="match_parent" />
+
+    <zuoix.com.zoomed.AutoFitGridRecyclerView
+        android:layout_width="match_parent"
+        android:id="@+id/command_list"
+        android:background="@null"
+        android:columnWidth="160dp"
+        android:layout_height="match_parent"/>
     <RelativeLayout
-        android:visibility="gone"
         android:id="@+id/fragment_holder"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -73,17 +86,5 @@
             map:uiZoomGestures="true"
             tools:ignore="MissingPrefix"/>
     </RelativeLayout>
-
-    <org.osmdroid.views.MapView android:id="@+id/map_offline"
-        android:layout_width="match_parent"
-        android:visibility="visible"
-        android:layout_height="match_parent" />
-
-    <zuoix.com.zoomed.AutoFitGridRecyclerView
-        android:layout_width="match_parent"
-        android:id="@+id/command_list"
-        android:background="@null"
-        android:columnWidth="150dp"
-        android:layout_height="match_parent"/>
 
 </RelativeLayout>

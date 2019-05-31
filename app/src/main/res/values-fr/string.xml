@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ZOOMED</string>
+    <string name="title_activity_main">ActivitéPrincipale</string>
+    <string name="title_home">Accueil</string>
+    <string name="title_dashboard">Tableau de bord</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="account">Compte</string>
+    <string name="command">Commander</string>
+    <string name="setting">Réglage</string>
+    <string name="api_key">AIzaSyDaJC6RemjIEe08j-KkvEPDSpa6ynI9WTQ</string>
+
+    <string name="start">JE L\'AI</string>
+    <string name="next">SUIVANT</string>
+    <string name="skip">SAUTER</string>
+    <string name="select_sim">Sélectionnez sim</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="how_to">Lorem Ipsum</string>
+    <string name="welcome_desc">C\'est lorem ipsum description de l'orgaine</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Bonjour fragment vierge</string>
+
+    <!-- first generation -->
+    <string name="where_is_my_car">Où est ma voiture</string>
+    <string name="continious_locate">Localisation continue</string>
+    <string name="cancel_continious_locate">Annuler la localisation continue</string>
+    <string name="speed_alerts">Alertes de vitesse</string>
+    <string name="no_speed_alerts">Aucune alerte de vitesse</string>
+    <string name="ignition_alert">Alerte d\'allumage</string>
+    <string name="cancel_ignition_alert">Annuler l\'alerte d'allumage</string>
+    <string name="immobilize_engine">Immobiliser le moteur</string>
+    <string name="activate_engine">Activer le moteur</string>
+    <string name="immobilize_engine_2">Immobiliser le moteur 2</string>
+    <string name="activate_engine_2">Activer le moteur 2</string>
+    <string name="voice_surveillance">Surveillance vocale</string>
+    <string name="two_way_calling">Double appel</string>
+    <string name="sms_mode">Mode SMS</string>
+
+    <!-- second generation -->
+    <string name="ignition_alerts">Alerte d\'allumage</string>
+    <string name="cancel_sos_alert">Annuler l\'alerte SOS</string>
+    <string name="shock_alert">Alerte de choc</string>
+    <string name="cancel_shock_alert">Annuler l\'alerte de choc</string>
+    <string name="sensors_alerts">Alertes capteurs</string>
+    <string name="cancel_sensors_alerts">Annuler les alertes de capteurs</string>
+    <string name="add_user">Ajouter un utilisateur</string>
+    <string name="remove_user">Supprimer l\'utilisateur</string>
+    <string name="calling_mode">Mode d\'appel</string>
+    <string name="set_geo_fence">Set Geo clôture</string>
+    <string name="cancel_geo_fence">Annuler la clôture géographique</string>
+    <string name="time_zone">Fuseau horaire</string>
+
+    <!-- third generation -->
+    <string name="gprs_interval">Intervalle GPRS</string>
+    <string name="check_gprs_interval">Vérifier l\'intervalle GPRS</string>
+    <string name="speed_alert">Alerte de vitesse</string>
+    <string name="add_user_sos">Ajouter un utilisateur SOS
+    </string>
+    <string name="add_user_monitoring">Ajouter la surveillance des utilisateurs</string>
+    <string name="no_speed_alert">Pas d\'alerte de vitesse</string>
+</resources>
+

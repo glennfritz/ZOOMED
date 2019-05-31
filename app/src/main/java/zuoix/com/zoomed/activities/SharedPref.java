@@ -62,11 +62,11 @@ public class SharedPref {
     }
 
     public Double getLatitude(){
-        return Double.parseDouble(sp.getString("latitude","37.4220041"));
+        return Double.parseDouble(sp.getString("latitude","12.700195"));
     }
 
     public Double getLongitude(){
-        return Double.parseDouble(sp.getString("longitude","-122.0862515"));
+        return Double.parseDouble(sp.getString("longitude","4.083453"));
     }
     public void setLatitude(String latitude){
         editor.putString("latitude",latitude);

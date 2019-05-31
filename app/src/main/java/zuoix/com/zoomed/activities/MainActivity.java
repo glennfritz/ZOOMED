@@ -9,6 +9,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.support.design.widget.NavigationView;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.location.Location;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -23,6 +24,8 @@ import android.telephony.SmsMessage;
 import android.util.Log;
 import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -39,6 +42,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.URL;
+import java.util.Locale;
 
 import zuoix.com.zoomed.GPSTracker;
 import zuoix.com.zoomed.R;
@@ -222,6 +226,21 @@ public class MainActivity extends AppCompatActivity  {
             finish();
         }
     }
+    public void changLanguage(Context context,String language){
+        Locale locale = new Locale(language);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
+        if(language.equals("fr")){
+            Toast.makeText(context, "Language French", Toast.LENGTH_SHORT).show();
+        }else if(language.equals("de")) {
+            Toast.makeText(context, "Language Dutch", Toast.LENGTH_SHORT).show();
+        }else  {
+            Toast.makeText(context, "Language English", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
 
 }
