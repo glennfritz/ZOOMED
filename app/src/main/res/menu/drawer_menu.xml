@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/top_nav_group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/about_icon"
+            android:title="@string/about_zoomed"/>
+        <item
+            android:id="@+id/nav_rate"
+            android:title="@string/like"
+            android:icon="@drawable/ic_star_black_24dp"/>
+
+        <item
+            android:id="@+id/nav_suggest"
+            android:icon="@drawable/ic_feedback_black_24dp"
+            android:title="@string/suggestions" />
+        <item
+            android:id="@+id/nav_privacy"
+            android:icon="@drawable/ic_lock_black_24dp"
+            android:title="@string/policies" />
+        <item
+            android:id="@+id/nav_eula"
+            android:icon="@drawable/ic_remove_red_eye_black_24dp"
+            android:title="@string/eula" />
+
+    </group>
+</menu>

@@ -8,4 +8,5 @@
     <dimen name="slide_title">30sp</dimen>
     <dimen name="slide_desc">18sp</dimen>
     <dimen name="desc_padding">20dp</dimen>
+    <dimen name="_10sdp">10dp</dimen>
 </resources>
