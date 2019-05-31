@@ -2,18 +2,15 @@ package zuoix.com.zoomed;
 
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 
 import zuoix.com.zoomed.activities.SharedPref;
+import zuoix.com.zoomed.models.CommandModel;
 
 public class CommandAdapter extends RecyclerView.Adapter<CommandAdapter.ViewHolder> {
     public Context context;
@@ -60,8 +57,7 @@ public class CommandAdapter extends RecyclerView.Adapter<CommandAdapter.ViewHold
             mView = itemView;
             name = mView.findViewById(R.id.title);
             image = mView.findViewById(R.id.image);
-
-            mView.setOnClickListener(new View.OnClickListener() {
+            mView.findViewById(R.id.item).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     CommandModel commandModel = BaseApplication.getInstance().getCommandList(generation).get(getAdapterPosition());

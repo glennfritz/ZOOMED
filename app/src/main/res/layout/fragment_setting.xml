@@ -1,49 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@null"
+    android:orientation="vertical"
+    android:weightSum="8"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:gravity="center_vertical"
     android:layout_height="match_parent">
 
-
-    <!--<LinearLayout
+    <!-- TODO: Update blank fragment layout -->
+    <Button
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:elevation="@dimen/_10sdp"
-        android:background="@color/colorPrimary"
-        android:weightSum="10"
-        android:orientation="horizontal">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:text="Add administrator"
+        android:textColor="#fff"
+        android:textSize="24sp"
+        android:background="#15A3F7"
+        android:id="@+id/add_administrator"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textColor="#fff"
+        android:textSize="24sp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:background="#15A3F7"
+        android:text="Remove administrator"
+        android:id="@+id/remove_administrator"/>
 
-        <ImageView
-            android:id="@+id/backArrow"
-            android:layout_width="0dp"
-            android:layout_height="24dp"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:padding="5dp"
-            android:src="@drawable/back_white" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/setting"
-            android:textStyle="bold"
-            android:paddingBottom="4dp"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="8"
-            android:gravity="center_vertical|center_horizontal"
-            android:textColor="@android:color/white"
-            android:textSize="18sp" />
-        <ImageView
-            android:id="@+id/saveButton"
-            android:layout_width="0dp"
-            android:layout_height="24dp"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:padding="5dp" />
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textColor="#fff"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:autofillHints="Set language"
+        android:background="#15A3F7"
+        android:id="@+id/set_language"/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textColor="#fff"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:autofillHints="Set time zone"
+        android:background="#15A3F7"
+        android:id="@+id/set_timeZone"/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textColor="#fff"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:autofillHints="Set generation"
+        android:background="#15A3F7"
+        android:id="@+id/set_generation"/>
 
-    </LinearLayout>-->
-</RelativeLayout>
+</LinearLayout>

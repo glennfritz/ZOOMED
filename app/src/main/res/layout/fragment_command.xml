@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@null"
+    android:gravity="center"
     android:layout_height="match_parent">
         <!--<LinearLayout
             android:layout_width="match_parent"
@@ -44,18 +46,44 @@
                     android:padding="5dp" />
 
         </LinearLayout>-->
-        <RelativeLayout
+
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/fragment_holder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <fragment xmlns:map="http://schemas.android.com/apk/res-auto"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:id="@+id/map_online"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center">
+            map:cameraBearing="112.5"
+            map:cameraTargetLat="37.4220041"
+            map:cameraTargetLng="-122.0862515"
+            map:cameraTilt="30"
+            map:cameraZoom="13"
+            map:mapType="normal"
+            map:uiCompass="false"
+            map:uiRotateGestures="true"
+            map:uiScrollGestures="false"
+            map:uiTiltGestures="true"
+            map:uiZoomControls="false"
+            map:uiZoomGestures="true"
+            tools:ignore="MissingPrefix"/>
+    </RelativeLayout>
 
-                <zuoix.com.zoomed.AutoFitGridRecyclerView
-                    android:layout_width="match_parent"
-                    android:id="@+id/command_list"
-                    android:background="@null"
-                    android:columnWidth="150dp"
-                    android:layout_height="wrap_content"/>
-        </RelativeLayout>
+    <org.osmdroid.views.MapView android:id="@+id/map_offline"
+        android:layout_width="match_parent"
+        android:visibility="visible"
+        android:layout_height="match_parent" />
 
+    <zuoix.com.zoomed.AutoFitGridRecyclerView
+        android:layout_width="match_parent"
+        android:id="@+id/command_list"
+        android:background="@null"
+        android:columnWidth="150dp"
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>

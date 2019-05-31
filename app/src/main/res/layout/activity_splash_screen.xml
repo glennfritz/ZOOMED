@@ -11,8 +11,19 @@
     <ImageView
         android:layout_width="144dp"
         android:layout_height="144dp"
+        android:id="@+id/logo"
         android:layout_centerInParent="true"
         android:src="@drawable/zoomed"
         />
+    <ProgressBar
+        android:layout_centerHorizontal="true"
+        android:id="@+id/pb"
+        android:visibility="visible"
+        android:progressTint="@color/colorPrimary"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/logo"
+        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="170dp"
+        android:layout_height="20dp" />
 
 </RelativeLayout>

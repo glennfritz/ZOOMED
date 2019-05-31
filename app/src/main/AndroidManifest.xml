@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="zuoix.com.zoomed">
 
     <uses-permission android:name="android.permission.SEND_SMS" />
@@ -45,19 +46,31 @@
             android:name=".activities.WelcomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/title_activity_main"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-
-        <receiver
-            android:name=".MessageReciever"
-            android:exported="true">
-            <intent-filter android:priority="1000">
-                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+        <activity android:name=".ParseDeepLinkActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <data
+                    android:host="zoomed.com"
+                    android:scheme="https"
+                    tools:ignore="ManifestResource" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
-        </receiver>
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/api_key"/>
+
     </application>
 
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true"/>
 </manifest>

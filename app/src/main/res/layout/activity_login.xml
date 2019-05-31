@@ -31,6 +31,7 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/usernameLayout"
                 android:hint="@string/username">
 
                 <android.support.design.widget.TextInputEditText
@@ -41,6 +42,8 @@
                     android:drawableStart="@drawable/ic_person_black_24dp"
                     android:drawableLeft="@drawable/ic_person_black_24dp"
                     android:textColorHint="@color/colorPrimaryDark"
+                    android:inputType="text"
+                    android:maxLines="1"
                     android:textSize="18sp" />
             </android.support.design.widget.TextInputLayout>
 
@@ -49,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/colorPrimaryDark"
-
+                android:id="@+id/passwordLayout"
                 android:hint="@string/password">
 
                 <android.support.design.widget.TextInputEditText
@@ -72,7 +75,8 @@
                 android:background="@color/colorPrimaryDark"
                 android:text="@string/log_in"
                 android:textColor="@android:color/white"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:onClick="logUserIn"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"

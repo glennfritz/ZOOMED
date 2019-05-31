@@ -14,6 +14,7 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.annotation.RequiresApi;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
@@ -31,7 +32,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -250,6 +250,11 @@ public class WelcomeActivity extends AppCompatActivity {
                     }
                 }
             }
+            else {
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            }
         }
     }
 
@@ -330,6 +335,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
         startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
+
         finish();
     }
 

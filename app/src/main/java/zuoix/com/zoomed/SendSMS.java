@@ -39,54 +39,6 @@ public class SendSMS {
         void updateview();
     }
 
-    /*public void sendSMS() {
-        String SENT = "SMS_SENT";
-        String DELIVERED = "SMS_DELIVERED";
-        context.registerReceiver (messageSent,new IntentFilter (SENT));
-        context.registerReceiver (messagedelivered,new IntentFilter (DELIVERED));
-        Intent send = new Intent (SENT);
-        send.putExtra ("command",command);
-        PendingIntent sentPI = PendingIntent.getBroadcast (context , 0 ,send , 0);
-        Intent deliver = new Intent (DELIVERED);
-        deliver.putExtra ("command",command);
-        PendingIntent deliveredPI = PendingIntent.getBroadcast (context , 0 , deliver , 0);
-        try{
-            Method method = Class.forName("android.os.ServiceManager").getDeclaredMethod("getService", String.class);
-            method.setAccessible(true);
-            Object param = method.invoke(null, "isms");
-            for(int i = 0; i <param.getClass().getMethods().length;i++ ){
-                System.out.println("       ///////////////////     "+param.getClass().getMethods()[i].getName()+"\n");
-            }
-            System.out.println("        /////// "+siName);
-            if(param == null){
-                System.out.println("        /////// null param");
-            }
-            method = Class.forName("com.android.internal.telephony.ISms$Stub").getDeclaredMethod("asInterface", IBinder.class);
-            method.setAccessible(true);
-            Object stubObj = method.invoke(null, param);
-            for(int i = 0; i <stubObj.getClass().getMethods().length;i++ ){
-                System.out.println("       /////     "+stubObj.getClass().getMethods()[i].getName()+"\n");
-            }
-            if (Build.VERSION.SDK_INT < 18) {
-                method = stubObj.getClass().getMethod("sendTextWithExtraParamsForSubscriber", String.class, String.class, String.class, PendingIntent.class, PendingIntent.class);
-                method.invoke(stubObj, DestNu, null, message, sentPI, deliveredPI);
-            } else {
-                method = stubObj.getClass().getMethod("sendTextWithExtraParamsForSubscriber", String.class, String.class, String.class, String.class, PendingIntent.class, PendingIntent.class);
-                method.invoke(stubObj, context, DestNu, null, message, sentPI, deliveredPI);
-            }
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-*/
     public void sendSMS() {
         String SENT = "SMS_SENT";
         String DELIVERED = "SMS_DELIVERED";
@@ -107,29 +59,7 @@ public class SendSMS {
             sms = SmsManager.getSmsManagerForSubscriptionId(defaultSim);
         }
         sms.sendTextMessage (sp.getDestinationNumber() , null , message , sentPI , deliveredPI);
-        /*Intent send = new Intent (SENT);
-        send.putExtra("command",id);
-        PendingIntent sentPI = PendingIntent.getBroadcast (context , 0 ,send , 0);
-        Intent deliver = new Intent (DELIVERED);
-        deliver.putExtra ("id",id);
-        PendingIntent deliveredPI = PendingIntent.getBroadcast (context , 0 , deliver , 0);
-        SmsManager sms = SmsManager.getDefault ();
-        sms.sendTextMessage (address , null , message , sentPI , deliveredPI);*/
     }
-/*
-    BroadcastReceiver messagedelivered = new BroadcastReceiver () {
-        @Override
-        public void onReceive(Context context , Intent intent) {
-            String mid = intent.getExtras ().getString ("id");
-            switch (getResultCode ()) {
-                case Activity.RESULT_OK:
-                    Toast.makeText (context , "SMS delivered " ,
-                            Toast.LENGTH_SHORT).show ();
-                    msgSent ( mid,"2");
-                    break;
-            }
-        }
-    };*/
 
     BroadcastReceiver messagedelivered = new BroadcastReceiver () {
         @Override
