@@ -37,9 +37,9 @@ public class InitCommands {
             BaseApplication.getInstance().firstGenerationCommand.add(new CommandModel(getString(R.string.activate_engine), "#supplyoil#password#", getResources().getDrawable(R.drawable.activate_engine_24dp)));
         }
         if (!sp.istrue()) {
-            BaseApplication.getInstance().firstGenerationCommand.add(new CommandModel(getString(R.string.immobilize_engine_2), "#stopelec#password#", getResources().getDrawable(R.drawable.default_command)));
+            BaseApplication.getInstance().firstGenerationCommand.add(new CommandModel(getString(R.string.immobilize_engine_2), "#stopelec#password#", getResources().getDrawable(R.drawable.activate_engine_24dp)));
         } else {
-            BaseApplication.getInstance().firstGenerationCommand.add(new CommandModel(getString(R.string.activate_engine_2), "#supplyelec#password#", getResources().getDrawable(R.drawable.default_command)));
+            BaseApplication.getInstance().firstGenerationCommand.add(new CommandModel(getString(R.string.activate_engine_2), "#supplyelec#password#", getResources().getDrawable(R.drawable.activate_engine_24dp)));
         }
         BaseApplication.getInstance().firstGenerationCommand.add(new CommandModel(getString(R.string.voice_surveillance), "#monitor#password#", getResources().getDrawable(R.drawable.voice_surveillance_24dp)));
         BaseApplication.getInstance().firstGenerationCommand.add(new CommandModel(getString(R.string.two_way_calling), "#call#password#", getResources().getDrawable(R.drawable.two_way_call_24dp)));
@@ -71,7 +71,7 @@ public class InitCommands {
         if (!sp.istrue()) {
             BaseApplication.getInstance().secondGenerationCommand.add(new CommandModel(getString(R.string.sensors_alerts), "ArmPASSWORD", getResources().getDrawable(R.drawable.sensors_alert_24dp)));
         } else {
-            BaseApplication.getInstance().secondGenerationCommand.add(new CommandModel(getString(R.string.cancel_sensors_alerts), "NoarmPASSWORD", getResources().getDrawable(R.drawable.default_command)));
+            BaseApplication.getInstance().secondGenerationCommand.add(new CommandModel(getString(R.string.cancel_sensors_alerts), "NoarmPASSWORD", getResources().getDrawable(R.drawable.activate_engine_24dp)));
         }
         BaseApplication.getInstance().secondGenerationCommand.add(new CommandModel(getString(R.string.add_user), "AdminPASSWORD XXXXXXXX (any phone number in 8\n" +
                 "digits)", getResources().getDrawable(R.drawable.add_user_24dp)));

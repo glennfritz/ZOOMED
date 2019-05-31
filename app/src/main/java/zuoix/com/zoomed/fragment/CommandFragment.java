@@ -5,7 +5,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -25,6 +27,10 @@ import com.google.android.gms.maps.model.LatLng;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.osmdroid.api.IMapController;
+import org.osmdroid.config.Configuration;
+import org.osmdroid.tileprovider.MapTileProviderBasic;
+import org.osmdroid.tileprovider.tilesource.ITileSource;
+import org.osmdroid.tileprovider.tilesource.MapBoxTileSource;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 
 import zuoix.com.zoomed.AutoFitGridRecyclerView;
@@ -33,13 +39,20 @@ import zuoix.com.zoomed.R;
 import zuoix.com.zoomed.activities.SharedPref;
 
 import org.osmdroid.tileprovider.tilesource.XYTileSource;
+import org.osmdroid.tileprovider.util.ManifestUtil;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.ItemizedIconOverlay;
 import org.osmdroid.views.overlay.ItemizedOverlayWithFocus;
+import org.osmdroid.views.overlay.MapEventsOverlay;
 import org.osmdroid.views.overlay.OverlayItem;
+import org.osmdroid.views.overlay.TilesOverlay;
+import org.osmdroid.views.overlay.mylocation.DirectedLocationOverlay;
 
+import java.io.File;
 import java.util.ArrayList;
+
+import static android.content.Context.LOCATION_SERVICE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -50,6 +63,7 @@ public class CommandFragment extends Fragment implements OnMapReadyCallback {
     boolean OFF_LINE_MODE_TRUE = true;
     private RelativeLayout onlineMap;
     private MapView offlineMap;
+    SharedPref sp;
 
     GoogleMap map;
 
@@ -78,6 +92,7 @@ public class CommandFragment extends Fragment implements OnMapReadyCallback {
         commandView = view.findViewById(R.id.command_list);
         adapter = new CommandAdapter(getContext());
         commandView.setAdapter(adapter);
+        sp = new SharedPref(getContext());
         adapter.notifyDataSetChanged();
         SupportMapFragment mapFragment = SupportMapFragment.newInstance();
         if(!OFF_LINE_MODE_TRUE){
@@ -90,11 +105,24 @@ public class CommandFragment extends Fragment implements OnMapReadyCallback {
         offlineMap.setTileSource(TileSourceFactory.MAPNIK);
         offlineMap.setBuiltInZoomControls(true);
         offlineMap.setMultiTouchControls(true);
-
         onlineMap = view.findViewById(R.id.fragment_holder);
-        offlineMap.setTileSource(new XYTileSource("YOUR MAP SOURCE", 0, 18, 256, ".jpg", new String[] {}));
 
-        SharedPref sp = new SharedPref(getContext());
+        String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath();
+        String pathDir = baseDir + "/Android/data/zouix.com.zoomed/";
+
+        Configuration.getInstance().setOsmdroidBasePath(new File(pathDir));
+        Configuration.getInstance().setOsmdroidTileCache(pathDir, "tiles"));
+        System.out.println("      tile  /////   "+pathDir);
+
+        offlineMap.setTileSource(new XYTileSource("Came", 0, 18, 256, ".png", new String[] { new File(Environment.getExternalStorageDirectory(), "tiles").getPath()}));
+        if(new File(Environment.getExternalStorageDirectory(), "tiles").exists()){
+            System.out.println(" ////////////////////           Tile exist");
+        }else{
+            System.out.println(" ////////////////////           Tile dont exist");
+        }
+        offlineMap.setUseDataConnection(true); //optional, but a good way to prevent loading from the network and test your zip loading.
+        IMapController mapController = offlineMap.getController();
+        mapController.setZoom(5);
         setDefaultViewPoint(sp.getLatitude(),sp.getLongitude());
 
    }
@@ -103,7 +131,7 @@ public class CommandFragment extends Fragment implements OnMapReadyCallback {
 
     void setDefaultViewPoint(double lat,double lon){
         IMapController mapController = offlineMap.getController();
-        mapController.setZoom(9.5);
+        mapController.setZoom(9);
         GeoPoint startPoint = new GeoPoint(lat, lon);
         mapController.setCenter(startPoint);
     }
@@ -121,6 +149,7 @@ public class CommandFragment extends Fragment implements OnMapReadyCallback {
             }
         }
     }
+
 
     @Override
     public void onMapReady(GoogleMap map) {

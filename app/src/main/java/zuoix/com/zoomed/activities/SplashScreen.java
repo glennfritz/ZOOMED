@@ -36,7 +36,8 @@ public class SplashScreen extends AppCompatActivity {
             Manifest.permission.CALL_PHONE,
             Manifest.permission.INTERNET,
             Manifest.permission.SEND_SMS,
-            Manifest.permission.READ_PHONE_STATE
+            Manifest.permission.READ_PHONE_STATE,
+            Manifest.permission.READ_EXTERNAL_STORAGE
     };
     private static final int PERMISSION_REQUEST_CODE = 1240;
     ProgressBar pb;
